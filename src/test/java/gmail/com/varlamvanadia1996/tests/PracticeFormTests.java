@@ -24,10 +24,11 @@ public class PracticeFormTests {
         String browser = System.getProperty("browser", "chrome1");
         String version = System.getProperty("version", "92");
         String remote = "https://" + login + ":" + password + "@" + url;
+        Configuration.browser = browser;
+        Configuration.browserVersion = version;
         Configuration.remote = remote;
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
-        Configuration.remote = remote;
 //        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
