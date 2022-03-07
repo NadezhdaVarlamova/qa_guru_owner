@@ -1,9 +1,11 @@
 package gmail.com.varlamvanadia1996.tests;
 
 import com.codeborne.selenide.Configuration;
+import gmail.com.varlamvanadia1996.config.CredentialsConfig;
 import gmail.com.varlamvanadia1996.helpers.Attach;
 import gmail.com.varlamvanadia1996.pages.RegistrationPage;
 import gmail.com.varlamvanadia1996.pages.StudentData;
+import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -12,18 +14,19 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 
 public class PracticeFormTests {
-
     RegistrationPage registrationPage = new RegistrationPage();
     StudentData studentData = new StudentData();
 
     @BeforeAll
     static void setUp() {
-        String login = System.getProperty("login");
-        String password = System.getProperty("password");
+        CredentialsConfig config = ConfigFactory.create(CredentialsConfig.class);
+//        String login = System.getProperty("login");
+//        String password = System.getProperty("password");
+        String login = config.login();
+        String password = config.password();
         String url = System.getProperty("url");
         String browser = System.getProperty("browser", "chrome1");
         String version = System.getProperty("version", "92");
-
 
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
